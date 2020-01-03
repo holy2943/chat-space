@@ -33,6 +33,8 @@ Things you may want to cover:
 
 ### Association
 - has_many :posts
+- has_many :groups,through
+- has_many :groups_users
 
 ## groups_usersテーブル
 
@@ -53,6 +55,11 @@ Things you may want to cover:
 |id|integer|null: false|
 |groups_name|integer|null: false|
 |groups_member|integer|null: false|
+
+### Association
+- has_many :posts
+- has_many :users,through
+- has_many :groups_users
 
 ### postsテーブル
 
