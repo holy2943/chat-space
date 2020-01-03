@@ -69,5 +69,5 @@ Things you may want to cover:
 |image|text||
 
 ### Association
-- belongs_to :groups
-- belongs_to :users
+- belongs_to :group
+- belongs_to :user
