@@ -4,19 +4,15 @@
       .top-items__names
         = current_user.name
       .top-items__icons
-        = link_to "#", class: "top-items__icons-edit" do
+        = link_to new_group_path, class: "top-items__icons-edit" do
           = icon('fas', 'edit')
-        = link_to edit_user_path(current_user) , class: "top-items__icons-cog" do
-          = icon('fas', 'cog', class: 'icon')
+        = link_to edit_user_path(current_user), class: "top-items__icons-cog" do
+          = icon('fas', 'cog')
   .side-bar__group
-    ②サイドバーグループリスト
-    .side-bar__group-list
-      .side-bar__group-list__name
-        リストネーム
-      .side-bar__group-list__message
-        チャットメッセージ
-    .side-bar__group-list
-      .side-bar__group-list__name
-        リストネーム
-      .side-bar__group-list__message
-        チャットメッセージ
+    - current_user.groups.each do |group|
+      .side-bar__group-list
+        = link_to '#' do
+          .side-bar__group-list__name
+            = group.name
+          .side-bar__group-list__message
+            チャットメッセージ
