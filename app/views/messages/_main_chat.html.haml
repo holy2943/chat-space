@@ -1,14 +1,13 @@
 .chat-main
   .chat-main__group-info
     .chat-main__group-info__name
-      test
       .chat-main__group-info__name__name-list
         .chat-main__group-info__name__title
           Member：
         .chat-main__group-info__name__group
           test
     .chat-main__group-info__edit
-      = link_to "#", class: ".chat-main__group-info__edit-btn" do
+      = link_to edit_group_path, class: ".chat-main__group-info__edit-btn" do
         Edit
   .chat-main__message-list
     .chat-main__message-list__all
