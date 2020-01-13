@@ -1,26 +1,23 @@
-.messages
-  = render @messages
-
 .chat-main
   .chat-main__group-info
     .chat-main__group-info__name
       .chat-main__group-info__name__name-list
-        .chat-main__group-info__name__title
-          Member：
-        .chat-main__group-info__name__group
-          test
+        .chat-main__group-info__name__name-list__group
+          = @group.name
+        .chat-main__group-info__name__name-list__title
+          ="Member: " + @group.users.pluck(:name).join(" , ")
     .chat-main__group-info__edit
-      = link_to edit_group_path(@group), class: ".chat-main__group-info__edit-btn" do
+      = link_to edit_group_path(@group), class: "chat-main__group-info__edit--btn" do
         Edit
 
+  .chat-main__message-list
+    = render @messages
 
-  .chat-main__message-form
+  = form_for [@group, @message], html: { class:"chat-main__message-form" } do |f|
     .chat-main__message-form__text
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        %label{class: "input-box__image", for:"image"}
-          = f.label :image, class: 'form__mask__image' do
-            = icon('far', 'image')
-            = f.file_field :image, class: 'hidden'
-        .chat-main__message-form__send
-          = f.submit 'Send', class: 'form__submit'
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      = f.label :image, class: 'input-box__image' do
+        = icon('far', 'image')
+        = f.file_field :image, class: 'hidden'
+      .chat-main__message-form__send
+        = f.submit 'Send', class: 'form__submit'
