@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # resources :groups, only: [:index, :new, :create, :edit, :update]
   resources :groups, only: [:new, :create, :edit, :update] do
     resources :messages, only: [:index, :create]
+  #↓namespaceを使ってつかってコントローラファイルを呼び出すルーティング記述
+    namespace :api do
+      resources :messages, only: :index, defaults: { format: 'json' }
+    end
   end
 end
 
